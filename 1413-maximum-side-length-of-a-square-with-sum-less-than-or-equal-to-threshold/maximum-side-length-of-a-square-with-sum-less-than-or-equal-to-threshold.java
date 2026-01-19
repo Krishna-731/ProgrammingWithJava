@@ -17,7 +17,7 @@ class Solution {
         while (left <= right) {
             int mid = left + (right-left)/2;
 
-            if (valid(pref, mid, threshold, m, n)) {
+            if (valid(pref, mid, threshold)) {
                 ans = mid;
                 left = mid+1;
             }
@@ -29,7 +29,10 @@ class Solution {
         return ans;
     }
 
-    public boolean valid(int[][] pref, int mid, int threshlod, int m, int n) {
+    public boolean valid(int[][] pref, int mid, int threshlod) {
+        int m = pref.length-1;
+        int n = pref[0].length-1;
+
         for(int i = mid; i <= m; i++) {
             for(int j = mid; j <= n; j++) {
                 int sum = pref[i][j] - pref[i-mid][j] - pref[i][j-mid] + pref[i-mid][j-mid];
